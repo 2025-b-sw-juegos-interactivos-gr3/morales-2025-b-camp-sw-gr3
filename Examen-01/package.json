@@ -1,0 +1,13 @@
+{
+  "name": "examen-01-alquimista",
+  "version": "1.0.0",
+  "description": "Juego 3D Recoger y Entregar - Alquimista (Babylon.js)",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
