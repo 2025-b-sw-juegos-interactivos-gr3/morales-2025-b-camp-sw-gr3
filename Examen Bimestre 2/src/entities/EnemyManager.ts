@@ -4,7 +4,8 @@ import {
     MeshBuilder,
     StandardMaterial,
     Color3,
-    Mesh
+    Mesh,
+    Texture
 } from "@babylonjs/core";
 import { Game } from "../game/Game";
 import { ENEMY_CONFIGS, EnemyConfig } from "../config/enemies.config";
@@ -50,7 +51,12 @@ export class Enemy {
         
         // Material
         const material = new StandardMaterial("enemyMat", this.scene);
-        material.diffuseColor = Color3.FromHexString(this.config.color);
+        try {
+            const texPath = `/assets/textures/enemy_${this.config.id}.png`;
+            material.diffuseTexture = new Texture(texPath, this.scene);
+        } catch (e) {
+            material.diffuseColor = Color3.FromHexString(this.config.color);
+        }
         material.emissiveColor = Color3.FromHexString(this.config.color).scale(0.4);
         this.mesh.material = material;
     }

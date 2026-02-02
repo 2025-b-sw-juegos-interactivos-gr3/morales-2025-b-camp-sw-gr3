@@ -14,13 +14,25 @@ const engine = new Engine(canvas, true, {
 // Crear la escena
 const scene = new Scene(engine);
 
-// Inicializar el juego
-const game = new Game(scene, canvas);
-
-// Ocultar pantalla de carga cuando esté listo
+// Ocultar pantalla de carga cuando la escena esté lista (lo registramos
+// antes de instanciar el juego para asegurarnos de que se ejecute aunque
+// la construcción del juego falle)
 scene.executeWhenReady(() => {
-    loadingDiv.style.display = "none";
+    if (loadingDiv) loadingDiv.style.display = "none";
 });
+
+// Inicializar el juego con manejo de errores para capturar excepciones
+// que podrían evitar que se oculte la pantalla de carga.
+let game: any;
+try {
+    game = new Game(scene, canvas);
+} catch (err) {
+    console.error("Error al inicializar el juego:", err);
+    if (loadingDiv) {
+        // Mostrar mensaje de error en la pantalla de carga para el usuario
+        loadingDiv.innerHTML = `<p style=\"color:#ff6666;\">Error al cargar el juego. Revisa la consola.</p>`;
+    }
+}
 
 // Game loop principal
 engine.runRenderLoop(() => {

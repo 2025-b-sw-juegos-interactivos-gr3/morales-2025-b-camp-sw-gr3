@@ -101,9 +101,13 @@ export class Game {
         const lastWaypoint = LEVEL_1.path[LEVEL_1.path.length - 1];
         core.position = new Vector3(lastWaypoint.x, 0.5, lastWaypoint.z);
         
-        // Material dorado brillante
+        // Material dorado o con textura si existe
         const coreMaterial = new StandardMaterial("coreMaterial", this.scene);
-        coreMaterial.diffuseColor = new Color3(1, 0.84, 0); // Dorado
+        try {
+            coreMaterial.diffuseTexture = new Texture("/assets/textures/core.png", this.scene);
+        } catch (e) {
+            coreMaterial.diffuseColor = new Color3(1, 0.84, 0); // Dorado
+        }
         coreMaterial.emissiveColor = new Color3(0.5, 0.42, 0); // Brillo
         coreMaterial.specularColor = new Color3(1, 1, 1);
         coreMaterial.specularPower = 64;

@@ -4,7 +4,8 @@ import {
     MeshBuilder,
     StandardMaterial,
     Color3,
-    Mesh
+    Mesh,
+    Texture
 } from "@babylonjs/core";
 import { Game } from "../game/Game";
 import { TOWER_CONFIGS, TowerConfig } from "../config/towers.config";
@@ -61,12 +62,17 @@ export class Tower {
         barrel.parent = this.mesh;
         tip.parent = this.mesh;
         
-        // Material
+        // Material (usar textura si existe, fallback a color)
         const material = new StandardMaterial(`towerMat_${this.gridX}_${this.gridZ}`, this.scene);
-        material.diffuseColor = Color3.FromHexString(this.config.color);
+        try {
+            const texPath = `/assets/textures/tower_${this.config.id}.png`;
+            material.diffuseTexture = new Texture(texPath, this.scene);
+        } catch (e) {
+            material.diffuseColor = Color3.FromHexString(this.config.color);
+        }
         material.emissiveColor = Color3.FromHexString(this.config.color).scale(0.3);
         material.specularColor = new Color3(0.5, 0.5, 0.5);
-        
+
         base.material = material;
         barrel.material = material;
         tip.material = material;

@@ -4,7 +4,8 @@ import {
     MeshBuilder,
     StandardMaterial,
     Color3,
-    Mesh
+    Mesh,
+    Texture
 } from "@babylonjs/core";
 
 export enum CellType {
@@ -58,17 +59,30 @@ export class Grid {
     private createMaterials(): void {
         // Material para celdas construibles
         this.buildableMaterial = new StandardMaterial("buildableMat", this.scene);
-        this.buildableMaterial.diffuseColor = new Color3(0.15, 0.15, 0.25);
+        // Intentar asignar textura si existe
+        try {
+            this.buildableMaterial.diffuseTexture = new Texture("/assets/textures/buildable.png", this.scene);
+        } catch (e) {
+            this.buildableMaterial.diffuseColor = new Color3(0.15, 0.15, 0.25);
+        }
         this.buildableMaterial.specularColor = new Color3(0.1, 0.1, 0.1);
         
         // Material para el camino
         this.pathMaterial = new StandardMaterial("pathMat", this.scene);
-        this.pathMaterial.diffuseColor = new Color3(0.24, 0.24, 0.36); // #3d3d5c
+        try {
+            this.pathMaterial.diffuseTexture = new Texture("/assets/textures/path.png", this.scene);
+        } catch (e) {
+            this.pathMaterial.diffuseColor = new Color3(0.24, 0.24, 0.36); // #3d3d5c
+        }
         this.pathMaterial.specularColor = new Color3(0.2, 0.2, 0.2);
         
         // Material para celdas ocupadas
         this.occupiedMaterial = new StandardMaterial("occupiedMat", this.scene);
-        this.occupiedMaterial.diffuseColor = new Color3(0.1, 0.3, 0.3);
+        try {
+            this.occupiedMaterial.diffuseTexture = new Texture("/assets/textures/occupied.png", this.scene);
+        } catch (e) {
+            this.occupiedMaterial.diffuseColor = new Color3(0.1, 0.3, 0.3);
+        }
         this.occupiedMaterial.specularColor = new Color3(0.1, 0.1, 0.1);
     }
     
