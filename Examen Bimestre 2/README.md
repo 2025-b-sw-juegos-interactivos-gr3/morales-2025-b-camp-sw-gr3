@@ -1,44 +1,101 @@
-# Neon Corridor: Vertical Slice (Prototipo Jugable)
+# 🗼 Tower Defense
 
-## 🎯 Objetivo
-Este proyecto es un **Vertical Slice** (Prueba de Concepto) enfocado en **mecánicas**: demostrar que el núcleo del juego es técnicamente viable y divertido en una escena pequeña, funcional y pulida.
+Juego de Tower Defense 3D con temática Sci-Fi desarrollado con Babylon.js.
 
-## 🧩 Qué incluye el Vertical Slice
-- Movimiento del jugador (WASD / Flechas)
-- Disparo (Click izquierdo / Espacio)
-- Enemigo con comportamiento simple (persecución + presión por cercanía)
-- Sistema de vida (Player HP / Enemy HP)
-- Feedback visual (flash al recibir daño)
-- Condición de victoria: derrotar al enemigo y mostrar **"SLICE COMPLETADO"**
+## 📋 Descripción
 
-## 🚫 Qué NO incluye (fuera de alcance)
-- Niveles completos o progresión
-- Menú de opciones avanzado
-- Guardado/carga
-- Arte final, animaciones complejas o sonido obligatorio
+Tower Defense es un juego de estrategia en tiempo real donde el jugador debe defender un núcleo de energía de oleadas de enemigos alienígenas mediante la construcción estratégica de torres defensivas.
 
-## 🖥️ Tecnologías
-- HTML + CSS + JavaScript
-- Phaser 3 (por CDN)
+## 👥 Equipo
 
-## ▶️ Cómo ejecutar
-### Opción recomendada (VS Code)
-1. Abre el proyecto en **Visual Studio Code**
-2. Instala la extensión **Live Server**
-3. Click derecho en `index.html` → **Open with Live Server**
-4. Se abrirá el menú y podrás entrar al prototipo
+- **Dorian Tituaña**
+- **Alexander Vera**
 
-### Opción rápida
-- Abre `index.html` en el navegador
-  - *(Si tu navegador bloquea recursos por rutas, usa Live Server.)*
+## 🛠️ Tecnologías
+
+- **Motor 3D:** Babylon.js 6.x
+- **Lenguaje:** TypeScript
+- **Build Tool:** Vite
+- **Gestión:** GitHub Projects
+
+## 🚀 Instalación
+
+```bash
+# Clonar el repositorio
+git clone [URL_DEL_REPOSITORIO]
+
+# Entrar al directorio
+cd tower-defense
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+```
 
 ## 🎮 Controles
-- Mover: **WASD** o **Flechas**
-- Disparar: **Click izquierdo** o **Espacio**
 
-## ✅ Criterio de éxito del Slice
-El prototipo se considera completado cuando:
-- el jugador logra derrotar al enemigo
-- aparece el mensaje: **✅ SLICE COMPLETADO**
+| Tecla/Acción | Función |
+|--------------|---------|
+| Click Izquierdo | Colocar torre |
+| Tecla 1 | Seleccionar Torre Láser |
+| Espacio | Iniciar oleada |
+| Escape | Cancelar selección |
+| WASD / Flechas | Mover cámara |
+| Rueda del Mouse | Zoom |
 
-## 📁 Estructura del proyecto
+## 📁 Estructura del Proyecto
+
+```
+tower-defense/
+├── src/
+│   ├── main.ts              # Punto de entrada
+│   ├── game/
+│   │   ├── Game.ts          # Clase principal
+│   │   ├── GameState.ts     # Estados del juego
+│   │   └── WaveManager.ts   # Sistema de oleadas
+│   ├── entities/
+│   │   ├── TowerManager.ts  # Torres y su gestión
+│   │   └── EnemyManager.ts  # Enemigos y su gestión
+│   ├── systems/
+│   │   ├── Grid.ts          # Sistema de grid/mapa
+│   │   └── EconomySystem.ts # Sistema de créditos
+│   ├── ui/
+│   │   └── HUD.ts           # Interfaz de usuario
+│   ├── levels/
+│   │   └── Level1.ts        # Configuración nivel 1
+│   └── config/
+│       ├── towers.config.ts  # Stats de torres
+│       └── enemies.config.ts # Stats de enemigos
+├── public/
+│   └── assets/
+├── index.html
+├── package.json
+└── tsconfig.json
+```
+
+## 🎯 Características
+
+- ✅ Grid 10x10 con camino en forma de S
+- ✅ Torre Láser Básico con targeting automático
+- ✅ Enemigo Drone Scout con pathfinding
+- ✅ Sistema de 5 oleadas progresivas
+- ✅ Sistema de créditos (ganar/gastar)
+- ✅ HUD con información del juego
+- ✅ Pantallas de victoria/derrota
+
+## 📊 Kanban
+
+- **GDD (TAR-):** [URL del Kanban TAR]
+- **Implementación (IM-):** [URL del Kanban IM]
+
+## 📄 Documentación
+
+- Game Design Document (GDD)
+- Documento de Entrega
+- Tareas del Kanban
+
+## 📝 Licencia
+
+MIT License - Proyecto académico EPN
