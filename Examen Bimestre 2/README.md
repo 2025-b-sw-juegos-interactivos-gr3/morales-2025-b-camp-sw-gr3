@@ -8,8 +8,7 @@ Tower Defense es un juego de estrategia en tiempo real donde el jugador debe def
 
 ## 👥 Equipo
 
-- **Dorian Tituaña**
-- **Alexander Vera**
+- **Carlos Morales**
 
 ## 🛠️ Tecnologías
 
