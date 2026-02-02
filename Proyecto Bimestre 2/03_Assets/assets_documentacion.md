@@ -1,204 +1,241 @@
-# Documentación de Assets - Vault Protocol
+# Documentación de Assets - Tower Defense
 **Versión:** 1.0  
-**Fecha:** 01/02/2025
-**Autor:** Carlos Morales 
-
-> Este documento define un inventario **planificado** de assets, sus especificaciones y propósito.  
-> No incluye assets finales, solo descripción técnica y guía de producción.
+**Fecha:** 01/02/202 
+**Proyecto:** Tower Defense (Sci-Fi 3D)  
+**Motor:** Babylon.js 6.x (WebGL)  
+**Equipo:** Dorian Tituaña, Alexander Vera  
 
 ---
 
 ## 1. Introducción
-Los assets son los recursos visuales, UI y audio utilizados en el videojuego. Esta documentación lista los assets planificados para Vault Protocol y sus especificaciones (formatos, resoluciones, uso en UI y gameplay).
+Los **assets** son todos los recursos visuales, de audio y UI utilizados en el videojuego **Tower Defense**.  
+Esta documentación lista el inventario de assets necesarios, sus especificaciones técnicas y su propósito dentro del juego.
+
+> Nota: El estilo del proyecto prioriza **formas geométricas 3D simples** (primitivas) + **materiales neón** para acelerar el desarrollo y mantener coherencia visual.
 
 ---
 
-## 2. Inventario de Assets (Planificado)
+## 2. Inventario de Assets
 
-### 2.1 Resumen por tipo
-| Tipo de asset | Cantidad | Formatos | Tamaño total aprox. |
-|---|---:|---|---:|
-| Fondos / escenarios (10 niveles) | 10 | PNG/WebP/JPG | 20–60 MB |
-| Sprites jugador | 1 set | PNG (spritesheet) | 2–8 MB |
-| Sprites dron/cámara | 2–3 sets | PNG | 2–6 MB |
-| UI (pantallas, iconos, HUD) | 1 pack | PNG/SVG | 2–10 MB |
-| SFX | 10–15 | WAV/OGG/MP3 | 5–20 MB |
-| Música | 2–3 pistas | OGG/MP3 | 10–30 MB |
-
----
-
-## 3. Assets Visuales - Escenarios por Nivel (10)
-
-> Resolución recomendada:
-- **Base:** 1280x720 (HD)
-- **Ideal:** 1920x1080 (Full HD)
-- **Formato recomendado:** WebP (peso bajo) o PNG (calidad máxima)
+### 2.1 Resumen por Tipo
+| Tipo | Cantidad aprox. | Formato / Tecnología | Observación |
+|---|---:|---|---|
+| Modelos 3D (primitivas) | 10+ | Babylon.js MeshBuilder | Se generan por código |
+| Materiales/Colores | 10+ | PBR/StandardMaterial | Paleta neón definida |
+| UI (paneles/íconos) | 10–20 | PNG/SVG o HTML/CSS | HUD + menús |
+| VFX (partículas/beam) | 5+ | ParticleSystem / Mesh | Láser, trails, impactos |
+| Audio (SFX + música) | 10–15 | MP3/WAV/OGG | Eventos de gameplay |
 
 ---
 
-### Nivel 1 - Lobby de Seguridad
-- **Archivo sugerido:** `bg_lvl01_lobby.webp`
-- **Descripción:** recepción con cámaras visibles, señalética y zonas de cobertura.
-- **Propósito:** nivel tutorial, lectura visual clara.
+## 3. Assets Visuales (3D)
 
-### Nivel 2 - Pasillo de Cámaras
-- **Archivo sugerido:** `bg_lvl02_corridor.webp`
-- **Descripción:** pasillos largos con iluminación repetitiva que refuerza patrones.
-- **Propósito:** enseñar lectura de conos de visión.
+## 3.1 Torres (Modelos 3D por Primitivas)
+Todas las torres se representan con geometría simple, con materiales neón.
 
-### Nivel 3 - Data Hall
-- **Archivo sugerido:** `bg_lvl03_datahall.webp`
-- **Descripción:** racks de servidores, luces frías, sombras marcadas.
-- **Propósito:** introducir dron patrulla.
+### Torre 1: Láser Básico
+- **Forma base:** Cilindro + esfera en la punta  
+- **Color/material:** Cyan neón `#00ffff`  
+- **Uso:** Disparo rápido (proyectil/beam simple)
 
-### Nivel 4 - Oficina Blindada
-- **Archivo sugerido:** `bg_lvl04_office.webp`
-- **Descripción:** oficinas, puertas, paneles de acceso y rutas alternativas.
-- **Propósito:** reforzar llaves/hack.
+### Torre 2: Cañón de Plasma
+- **Forma base:** Cubo + cilindro grueso como cañón  
+- **Color/material:** Cyan neón con glow suave  
+- **Uso:** Disparo lento con daño alto (AOE visual al impactar)
 
-### Nivel 5 - Sala de Servidores (Calor)
-- **Archivo sugerido:** `bg_lvl05_heat.webp`
-- **Descripción:** vapor visual sutil y luces de warning.
-- **Propósito:** presión por energía (decisiones más estrictas).
+### Torre 3: Torre Tesla
+- **Forma base:** Esfera + anillos giratorios  
+- **Color/material:** Cyan neón con efecto eléctrico  
+- **Uso:** Cadena a 3 enemigos (rayos conectando objetivos)
 
-### Nivel 6 - Almacén
-- **Archivo sugerido:** `bg_lvl06_storage.webp`
-- **Descripción:** cajas y pasillos estrechos con cobertura frecuente.
-- **Propósito:** introducir distractor como herramienta.
+### Torre 4: Misiles Guiados
+- **Forma base:** Plataforma + 4 tubos de lanzamiento  
+- **Color/material:** Cyan neón + detalles grises metálicos  
+- **Uso:** Proyectil que persigue objetivo (misil)
 
-### Nivel 7 - Laboratorio
-- **Archivo sugerido:** `bg_lvl07_lab.webp`
-- **Descripción:** cristales/vidrios/tubos, área restringida.
-- **Propósito:** timing y eventos de alerta.
-
-### Nivel 8 - Torre Central
-- **Archivo sugerido:** `bg_lvl08_tower.webp`
-- **Descripción:** estructura vertical y vigilancia multicapa.
-- **Propósito:** complejidad máxima.
-
-### Nivel 9 - Vault Exterior
-- **Archivo sugerido:** `bg_lvl09_vaultouter.webp`
-- **Descripción:** exterior nocturno con seguridad pesada y reflectores.
-- **Propósito:** escape y bloqueos por alerta.
-
-### Nivel 10 - Vault Core
-- **Archivo sugerido:** `bg_lvl10_core.webp`
-- **Descripción:** bóveda final con iluminación dramática.
-- **Propósito:** cierre del juego y extracción.
+### Torre 5: Ralentizador
+- **Forma base:** Pirámide invertida + onda/halo  
+- **Color/material:** Cyan neón (halo semitransparente)  
+- **Uso:** Campo que reduce velocidad 40%
 
 ---
 
-## 4. Assets Visuales - Personaje y Enemigos
+## 3.2 Enemigos (Modelos 3D por Primitivas)
 
-### 4.1 Jugador (Infiltrador)
-- **Archivo sugerido:** `spr_player_agent.png`
-- **Tipo:** spritesheet (2D)
-- **Resolución sugerida:** 1024–2048 (sheet)
-- **Animaciones planificadas:**
-  - idle
-  - walk
-  - crouch
-  - sprint
-  - interact
-  - hack
-- **Notas de legibilidad:**
-  - silueta clara
-  - contraste alto contra fondos fríos
+### Enemigo 1: Drone Scout
+- **Forma:** Esfera pequeña  
+- **Color:** Rojo/Magenta neón `#ff0055`  
+- **VFX:** Trail de partículas  
+- **Notas:** Unidad básica, rápida y frágil
 
-### 4.2 Dron
-- **Archivo sugerido:** `spr_enemy_drone.png`
-- **Estados visuales:**
-  - normal (luz verde)
-  - sospecha (luz amarilla)
-  - alerta (luz roja)
+### Enemigo 2: Heavy Walker
+- **Forma:** Cubo grande + 4 cilindros (patas)  
+- **Color:** Magenta con detalles oscuros  
+- **Notas:** Tanque resistente, velocidad lenta
 
-### 4.3 Cámara
-- **Archivo sugerido:** `spr_security_camera.png`
-- **Indicador de visión (UI):** overlay temporal (no permanente)
+### Enemigo 3: Stealth Unit
+- **Forma:** Tetraedro  
+- **Material:** Semi-transparente (invisibilidad por 3s)  
+- **Notas:** Cambia visibilidad durante oleadas avanzadas
+
+### Enemigo 4: Boss Titan
+- **Forma:** Composición de múltiples primitivas  
+- **Tamaño:** 3x el enemigo normal  
+- **Notas:** Jefe de oleada (cada 5 oleadas)
 
 ---
 
-## 5. UI Assets
+## 3.3 Mapa / Escenario (Nivel 1 - Slice Vertical Examen)
+### Grid y Camino
+- **Dimensiones del mapa:** 10x10 celdas  
+- **Camino:** forma de S (ruta por donde avanzan enemigos)  
+- **Zonas buildable:** 15 espacios de colocación (terreno válido)  
 
-### 5.1 Pantallas UI
-- **Menú Principal:** `ui_menu.png`
-- **Briefing:** `ui_briefing.png`
-- **Pausa:** `ui_pause.png`
-- **Resumen extracción:** `ui_summary.png`
+**Colores recomendados:**
+- Fondo: `#0a0a1a` (azul muy oscuro)
+- Camino: `#3d3d5c` (gris metálico)
+- Núcleo: `#ffd700` (dorado)
 
-### 5.2 Elementos HUD (pack)
-- `icon_energy.svg/png`
-- `icon_alert.svg/png`
-- `icon_gadget.svg/png`
-- `icon_interact.svg/png`
-
-### 5.3 Tipografía sugerida
-- Roboto / Inter (alta legibilidad)
-- Uso consistente (títulos vs texto)
+### Núcleo (Objetivo a Defender)
+- **Forma:** esfera/estructura central con glow dorado
+- **Color:** `#ffd700`
+- **Feedback visual:** parpadeo o pulso cuando recibe daño
 
 ---
 
-## 6. Audio Assets
+## 4. UI (Interfaz)
 
-### 6.1 SFX mínimos (lista)
-- `sfx_steps_walk`
-- `sfx_steps_crouch`
-- `sfx_steps_sprint`
-- `sfx_hack_start`
-- `sfx_hack_success`
-- `sfx_hack_fail`
-- `sfx_alert_lvl1`
-- `sfx_alert_lvl2`
-- `sfx_door_open`
-- `sfx_door_lock`
-- `sfx_drone_near`
-- `sfx_drone_far`
-- `sfx_pickup_fragment`
+## 4.1 HUD en Juego
+**Elementos mínimos:**
+- Panel superior izquierdo:
+  - Créditos
+  - Vida del núcleo
+  - Oleada actual
+- Panel inferior:
+  - Selector de torres (iconos + costo + atajo 1–5)
+- Panel derecho:
+  - Información de torre seleccionada (stats, botones mejorar/vender)
+- Centro superior:
+  - Botón “Iniciar oleada” + indicador de tiempo entre oleadas
 
-### 6.2 Música planificada
-- `music_menu_ambient`
-- `music_game_low_tension`
-- `music_game_high_alert`
+**Formatos recomendados:**
+- Iconos: PNG (64x64) o SVG
+- Paneles: PNG con 9-slicing o UI HTML/CSS (según implementación)
 
 ---
 
-## 7. Especificaciones Técnicas Recomendadas
+## 4.2 Menú Principal
+- Botón: Jugar (selección de nivel)
+- Botón: Opciones (volumen/calidad)
+- Botón: Créditos
 
-| Elemento | Recomendación |
+---
+
+## 4.3 Pantallas de Estado
+- **Victoria:** estadísticas + botón siguiente nivel
+- **Derrota:** game over + reintentar
+- **Pausa:** continuar / reiniciar / salir
+
+---
+
+## 5. VFX (Efectos Visuales)
+
+### 5.1 Disparo Láser (Torre Láser)
+- Beam simple (línea/mesh) o proyectil rápido
+- Color: cyan `#00ffff`
+- Glow leve + fade-out rápido
+
+### 5.2 Impacto Plasma (AOE)
+- Partículas circulares + expansión breve
+- Flash corto en zona de impacto
+
+### 5.3 Rayo Tesla (Cadena)
+- Rayo con jitter (línea segmentada) conectando 2–3 enemigos
+- Sonido eléctrico asociado
+
+### 5.4 Trail de Enemigos
+- Drone Scout con partículas pequeñas
+- Boss con trail más intenso
+
+### 5.5 Feedback de Daño al Núcleo
+- Pulso dorado + pantalla con leve flash (opcional)
+- Alarma sonora corta
+
+---
+
+## 6. Audio
+
+## 6.1 Música
+- Menú: ambient electrónico atmosférico
+- Oleadas: synthwave con tensión
+- Entre oleadas: tema más calmado
+- Boss: tema intenso
+
+## 6.2 Efectos de Sonido (SFX)
+| Evento | Descripción |
 |---|---|
-| Fondos niveles | 1280x720 mínimo, 1920x1080 ideal |
-| Sprites | PNG con transparencia |
-| UI iconos | SVG preferible, PNG fallback |
-| SFX | OGG/WAV para calidad |
-| Música | OGG/MP3 (balance peso/calidad) |
+| Colocar torre | click metálico + zumbido |
+| Láser | “pew” sintético corto |
+| Plasma | whoosh profundo + explosión |
+| Tesla | chisporroteo eléctrico |
+| Misil | silbido de cohete + explosión |
+| Enemigo destruido | pop digital + sonido créditos |
+| Daño al núcleo | alarma corta + impacto grave |
+| Nueva oleada | sirena corta |
+| Victoria | fanfarria épica corta |
+| Derrota | explosión larga + tono grave descendente |
 
 ---
 
-## 8. Requisitos de Almacenamiento (estimación)
-| Componente | Tamaño aprox. |
-|---|---:|
-| Fondos (10) | 20–60 MB |
-| Sprites + UI | 5–20 MB |
-| Audio total | 15–50 MB |
-| Total aproximado | 40–130 MB |
+## 7. Formatos, Tamaños y Reglas
+
+### 7.1 Reglas de Formato
+- **Modelos:** preferir primitivas generadas por código (sin necesidad de .glb)
+- **Texturas:** usar solo si es necesario (optimización)
+- **UI:** PNG/SVG; tipografía legible; contraste alto
+- **Audio:** MP3/OGG para música, WAV/OGG para SFX (según peso)
+
+### 7.2 Objetivos de Optimización
+- Mantener tiempo de carga bajo (assets livianos)
+- Reutilizar materiales (paleta neón)
+- Partículas limitadas para no bajar FPS
+
+---
+
+## 8. Estructura de Carpetas (Assets)
+Sugerencia dentro del proyecto:
+
+public/assets/  
+├── ui/  
+│   ├── icons/  
+│   ├── panels/  
+│   └── fonts/  
+├── audio/  
+│   ├── music/  
+│   └── sfx/  
+├── vfx/  
+│   ├── particles/  
+│   └── shaders/  
+└── references/  
+    ├── towers/  
+    ├── enemies/  
+    └── ui/  
 
 ---
 
 ## 9. Derechos y Atribuciones
-- Si se usan recursos externos, documentar:
-  - fuente
-  - licencia
-  - autor
-  - enlace (si aplica)
-- Recomendación: preferir CC0 o assets propios para evitar problemas legales.
+- Si se usan audios/imágenes externas, documentar:
+  - Fuente
+  - Licencia
+  - Enlace original
+- Ideal: usar recursos propios o libres (CC0 / royalty-free).
 
 ---
 
-## Historial de Cambios
+## 10. Historial de Cambios
 | Versión | Fecha | Cambios |
 |---|---|---|
-| 1.0 | 2025 | Inventario y especificaciones iniciales |
+| 1.0 | Dic 2024 | Inventario inicial completo |
 
 ---
-
 **Fin del documento**

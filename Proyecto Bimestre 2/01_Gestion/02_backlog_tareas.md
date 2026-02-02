@@ -1,202 +1,272 @@
-# Backlog de Tareas - Vault Protocol (Pre-producción)
+# Backlog de Tareas - Tower Defense
 
-> Esta planificación simula un entorno ágil.  
-> Las “horas reales” se registran como **simulación** para cierre del proyecto documental.
-
----
-
-## Resumen de Épicas
-1. Investigación y Concepto (High Concept)
-2. Análisis MDA y Pilares de Experiencia
-3. Diseño de Mecánicas Core y Sistemas
-4. Diseño de Niveles (10 niveles)
-5. UI/UX + Arte + Audio (mockups y dirección)
-6. Arquitectura de Software (UML + patrones)
-7. QA del Documento y Entrega Final
+**Integrante:** Carlos Morales  
+**Fecha:** 01/02/2026
 
 ---
 
-## Épica 1: Investigación y Concepto
-### Tarea 1.1: Definir High Concept + Elevator Pitch
-- **Estado:** Completado
-- **Prioridad:** Alta
-- **Entregable:** Sección 1 del GDD
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
+## 1. Enfoque del Backlog
 
-### Tarea 1.2: Definir público objetivo, plataforma y referencias
-- **Estado:** Completado
+Este backlog integra dos frentes:
+- **TAR-**: tareas para completar/gestionar documentación del GDD (Kanban GDD).
+- **IM-**: historias de usuario para implementar el slice vertical del Nivel 1 (Kanban Implementación).
+
+Para la evaluación se prioriza el **slice vertical del Nivel 1** (grid + torre + enemigo + oleadas + economía + HUD + win/lose).
+
+---
+
+## 2. Épicas (Resumen)
+
+### Épica A: Gestión del Proyecto (TAR-/General)
+- Configurar repositorio y tableros Kanban
+- Mantener documentación y control de cambios
+
+### Épica B: Diseño y Documentación (TAR-)
+- Completar GDD (mecánicas, niveles, economía, UI, arte, técnica, cronograma)
+- Definir assets mínimos para el slice vertical
+
+### Épica C: Implementación Slice Vertical (IM-)
+- Setup Babylon + TypeScript
+- Grid 10x10 + camino en “S”
+- Núcleo (vida/daño)
+- Torre Láser (targeting + disparo)
+- Enemigo Drone Scout (movimiento por camino)
+- Oleadas (WaveManager)
+- Economía (créditos)
+- HUD básico
+- Victoria/Derrota + game loop
+
+---
+
+## 3. Backlog Detallado (Implementación - IM-)
+
+> Nota: “Estado” recomendado para Kanban: **To Do / In Progress / Done**
+
+---
+
+## 🚀 CONFIGURACIÓN DEL PROYECTO
+
+### IM-001: Configurar proyecto Babylon.js con TypeScript
+- **Estado:** To Do
 - **Prioridad:** Alta
 - **Criterios de aceptación:**
-  - 3 referencias justificadas
-  - plataforma objetivo definida
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
+  - Proyecto creado con Vite (vanilla-ts)
+  - Babylon.js instalado y escena básica renderizando
+  - Hot reload funcionando
+- **Estimación:** 3 puntos
 
-### Tarea 1.3: Definir 3 pilares y USP
-- **Estado:** Completado
-- **Prioridad:** Alta
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
-
----
-
-## Épica 2: Análisis MDA y Pilares de Experiencia
-### Tarea 2.1: Definir Aesthetics (emociones objetivo)
-- **Estado:** Completado
+### IM-002: Crear estructura de carpetas y archivos base
+- **Estado:** To Do
 - **Prioridad:** Alta
 - **Criterios de aceptación:**
-  - mínimo 3 emociones
-  - justificación por audiencia
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
+  - Carpetas: src/game, src/entities, src/systems, src/ui, src/levels, src/config
+  - Archivos base (Game.ts, main.ts) y imports correctos
+- **Estimación:** 2 puntos
 
-### Tarea 2.2: Definir Dynamics (comportamientos emergentes)
-- **Estado:** Completado
+---
+
+## 🗺️ SISTEMA DE MAPA Y GRID
+
+### IM-003: Implementar sistema de grid para el mapa
+- **Estado:** To Do
 - **Prioridad:** Alta
 - **Criterios de aceptación:**
-  - cada emoción debe mapearse a dinámica
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
+  - Grid 10x10 visible
+  - Celdas diferenciadas (PATH vs BUILDABLE)
+  - Coordenadas funcionando
+  - Cámara configurada para ver todo el mapa
+- **Estimación:** 5 puntos
 
-### Tarea 2.3: Definir Mechanics medibles
-- **Estado:** Completado
+### IM-004: Diseñar e implementar el camino del Nivel 1
+- **Estado:** To Do
 - **Prioridad:** Alta
 - **Criterios de aceptación:**
-  - valores numéricos base (energía, detección, velocidad)
-- **Horas Est.:** 3 | **Horas Reales (sim):** 3
+  - Camino en forma de S visible
+  - Spawn de enemigos marcado
+  - Núcleo marcado al final del camino
+- **Estimación:** 3 puntos
 
 ---
 
-## Épica 3: Diseño de Mecánicas Core y Sistemas
-### Tarea 3.1: Diseñar Core Loop y diagrama
-- **Estado:** Completado
-- **Prioridad:** Alta
-- **Entregable:** diagrama + descripción
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
+## 🧠 NÚCLEO / OBJETIVO
 
-### Tarea 3.2: Sistema de Detección (cámaras/drones/alerta)
-- **Estado:** Completado
+### IM-005: Implementar núcleo de energía
+- **Estado:** To Do
 - **Prioridad:** Alta
 - **Criterios de aceptación:**
-  - 3 niveles de alerta definidos
-  - reglas de detección con tiempos
-- **Horas Est.:** 4 | **Horas Reales (sim):** 4
+  - Núcleo visible en escena
+  - Vida inicial definida
+  - Recibe daño si los enemigos llegan al final
+- **Estimación:** 3 puntos
 
-### Tarea 3.3: Sistema de Energía y gadgets
-- **Estado:** Completado
+---
+
+## 🏗️ TORRES, TARGETING Y DISPARO
+
+### IM-007: Implementar Torre Láser Básico
+- **Estado:** To Do
 - **Prioridad:** Alta
 - **Criterios de aceptación:**
-  - fuentes y sumideros de energía
-  - cooldowns y costos
-- **Horas Est.:** 3 | **Horas Reales (sim):** 3
+  - Torre se coloca en celda válida
+  - Detecta enemigos en rango
+  - Dispara (daño aplica correctamente)
+- **Estimación:** 8 puntos
 
-### Tarea 3.4: Sistema de loot y progreso
-- **Estado:** Completado
-- **Prioridad:** Media
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
+### IM-008: Implementar Targeting System
+- **Estado:** To Do
+- **Prioridad:** Alta
+- **Criterios de aceptación:**
+  - Selección automática de objetivo
+  - Priorización consistente (por ejemplo: el más cercano al final)
+  - Update por frame (delta time)
+- **Estimación:** 5 puntos
 
 ---
 
-## Épica 4: Diseño de Niveles (10 niveles)
-### Tarea 4.1: Definir plantilla de nivel (objetivo + riesgos + rutas)
-- **Estado:** Completado
-- **Prioridad:** Alta
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
+## 👾 ENEMIGOS Y PATHFINDING
 
-### Tarea 4.2: Diseñar niveles 1–5
-- **Estado:** Completado
+### IM-011: Implementar enemigo Drone Scout
+- **Estado:** To Do
 - **Prioridad:** Alta
-- **Horas Est.:** 3 | **Horas Reales (sim):** 3
+- **Criterios de aceptación:**
+  - Enemigo se spawnea y recorre el camino
+  - Vida y velocidad definidas
+  - Muerte al llegar a 0 HP
+- **Estimación:** 5 puntos
 
-### Tarea 4.3: Diseñar niveles 6–10
-- **Estado:** Completado
+### IM-012: Implementar Pathfinding / movimiento sobre el camino
+- **Estado:** To Do
 - **Prioridad:** Alta
-- **Horas Est.:** 3 | **Horas Reales (sim):** 3
+- **Criterios de aceptación:**
+  - Sigue waypoints del camino del Nivel 1
+  - Movimiento estable con delta time
+- **Estimación:** 5 puntos
 
 ---
 
-## Épica 5: UI/UX + Arte + Audio
-### Tarea 5.1: Wireframes (menú, HUD, pausa, resumen)
-- **Estado:** Completado
+## 🌊 OLEADAS
+
+### IM-014: Implementar WaveManager (oleadas)
+- **Estado:** To Do
 - **Prioridad:** Alta
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
-
-### Tarea 5.2: Dirección de arte + paleta + estilo
-- **Estado:** Completado
-- **Prioridad:** Media
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
-
-### Tarea 5.3: Diseño de audio (SFX + música)
-- **Estado:** Completado
-- **Prioridad:** Media
-- **Horas Est.:** 1.5 | **Horas Reales (sim):** 1.5
+- **Criterios de aceptación:**
+  - 5 oleadas (Nivel 1)
+  - Spawns controlados por tiempo/cantidad
+  - Avanza oleada al eliminar todos
+- **Estimación:** 8 puntos
 
 ---
 
-## Épica 6: Arquitectura de Software (Ingeniería)
-### Tarea 6.1: UML Casos de Uso
-- **Estado:** Completado
-- **Prioridad:** Alta
-- **Horas Est.:** 1.5 | **Horas Reales (sim):** 1.5
+## 💰 ECONOMÍA
 
-### Tarea 6.2: UML Clases conceptual
-- **Estado:** Completado
+### IM-017: Implementar sistema de créditos
+- **Estado:** To Do
 - **Prioridad:** Alta
-- **Horas Est.:** 2.5 | **Horas Reales (sim):** 2.5
-
-### Tarea 6.3: FSM Estados (jugador y enemigo)
-- **Estado:** Completado
-- **Prioridad:** Media
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
-
-### Tarea 6.4: Patrones y justificación
-- **Estado:** Completado
-- **Prioridad:** Alta
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
+- **Criterios de aceptación:**
+  - Créditos iniciales configurables (Nivel 1: 300)
+  - Ganancia por kill
+  - Gasto al construir torre
+- **Estimación:** 3 puntos
 
 ---
 
-## Épica 7: QA del Documento y Entrega
-### Tarea 7.1: Revisión de coherencia (MDA ↔ sistemas ↔ niveles)
-- **Estado:** Completado
-- **Prioridad:** Alta
-- **Horas Est.:** 2 | **Horas Reales (sim):** 2
+## 🖥️ UI / HUD
 
-### Tarea 7.2: Checklist final y formato del repo
-- **Estado:** Completado
+### IM-022: Implementar HUD básico
+- **Estado:** To Do
 - **Prioridad:** Alta
-- **Horas Est.:** 1.5 | **Horas Reales (sim):** 1.5
+- **Criterios de aceptación:**
+  - Muestra créditos actuales
+  - Muestra vida del núcleo
+  - Muestra oleada actual
+- **Estimación:** 5 puntos
 
 ---
 
-## Resumen de Métricas (Simulado)
+## ✅ CONDICIONES DE VICTORIA / DERROTA + LOOP
+
+### IM-028: Implementar game loop principal
+- **Estado:** To Do
+- **Prioridad:** Alta
+- **Criterios de aceptación:**
+  - Update de torres (targeting/disparo)
+  - Update de enemigos (movimiento)
+  - Condiciones de win/lose evaluadas
+  - Delta time aplicado
+- **Estimación:** 5 puntos
+
+---
+
+## 4. Tareas Kanban para GDD (TAR-) - Referencia
+
+Estas tareas se crean en el tablero Kanban del GDD. Ejemplos relevantes:
+- TAR-008: Diseñar sistema de enemigos (stats + recompensas)
+- TAR-009: Diseñar sistema de oleadas (curva + jefes)
+- TAR-010: Definir controles del juego (mouse/teclado/atajos)
+- TAR-011: Diseñar Nivel 1 (grid 10x10 + camino + oleadas)
+- TAR-014: Definir sistema de economía
+- TAR-016: Definir arte y estilo visual
+- TAR-018: Documentar especificaciones técnicas
+- TAR-019: Crear cronograma de desarrollo
+
+---
+
+## 5. Historias CRÍTICAS (Mínimo para Examen)
+
+| ID     | Historia                  | Puntos |
+|--------|---------------------------|:------:|
+| IM-001 | Setup Babylon.js          |   3    |
+| IM-003 | Sistema de Grid           |   5    |
+| IM-004 | Camino Nivel 1            |   3    |
+| IM-005 | Núcleo                    |   3    |
+| IM-007 | Torre Láser               |   8    |
+| IM-008 | Targeting                 |   5    |
+| IM-011 | Drone Scout               |   5    |
+| IM-012 | Pathfinding               |   5    |
+| IM-014 | WaveManager               |   8    |
+| IM-017 | Sistema créditos          |   3    |
+| IM-022 | HUD básico                |   5    |
+| IM-028 | Game loop                 |   5    |
+| **TOTAL** |                         | **58** |
+
+---
+
+## 6. Métricas (Iniciales)
+
 | Métrica | Valor |
-|---|---:|
-| Total de tareas | 23 |
-| Completadas | 23 |
-| En progreso | 0 |
-| Horas estimadas | 32 |
-| Horas reales (simuladas) | 32 |
-| Variación | 0% |
+|--------:|:------|
+| Historias críticas (IM-) | 12 |
+| Puntos críticos | 58 |
+| Nivel del slice | Nivel 1 (grid 10x10, camino “S”, 5 oleadas) |
+| Motor / Lenguaje | Babylon.js + TypeScript |
+| Gestión | GitHub Projects (Kanban) |
 
 ---
 
-## Riesgos Identificados y Mitigación
-1) **Riesgo:** MDA incoherente (mecánicas no generan emoción esperada)  
-   - **Mitigación:** tabla de trazabilidad MDA (incluida en GDD)  
-   - **Estado:** Resuelto
+## 7. Riesgos Identificados y Mitigación
 
-2) **Riesgo:** Exceso de sistemas para el scope del bimestre  
-   - **Mitigación:** priorización MoSCoW (Must/Should/Could/Won’t)  
-   - **Estado:** Resuelto
+### Riesgo 1: Pathfinding/movimiento inestable (saltos, jitter, desincronización)
+- **Mitigación:** usar waypoints simples + delta time y pruebas por oleada.
 
-3) **Riesgo:** UI sobrecargada y poco legible  
-   - **Mitigación:** HUD minimalista + jerarquía visual  
-   - **Estado:** Resuelto
+### Riesgo 2: UI/HUD consume tiempo por integración con escena
+- **Mitigación:** HUD mínimo obligatorio primero (créditos, vida, oleada).
+
+### Riesgo 3: Falta de tiempo para polish (efectos, animaciones, audio)
+- **Mitigación:** priorizar funcionalidades críticas; efectos como “deseables”.
 
 ---
 
-## Próximos Pasos (si se implementara)
-- Prototipo vertical slice (nivel 1)
-- Pruebas de usuario y balance
-- Iteración de niveles y dificultad
-- Producción de assets finales
+## 8. Próximos Pasos (Recomendado)
+
+1) IM-001 + IM-002 (setup y estructura)  
+2) IM-003 + IM-004 (grid + camino)  
+3) IM-005 (núcleo y vida)  
+4) IM-011 + IM-012 (enemy + movimiento)  
+5) IM-007 + IM-008 (torre + targeting/disparo)  
+6) IM-014 (oleadas)  
+7) IM-017 (economía)  
+8) IM-022 (HUD)  
+9) IM-028 (game loop + win/lose)  
 
 ---
 

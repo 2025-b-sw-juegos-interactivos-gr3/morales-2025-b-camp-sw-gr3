@@ -1,111 +1,114 @@
-# Índice General - Documentación VAULT PROTOCOL
-**Proyecto:** Vault Protocol  
-**Desarrollador:** [TU NOMBRE AQUÍ]  
-**Bimestre:** Segundo  
-**Año Académico:** 2025  
+# Índice General - Documentación Tower Defense
+
+**Proyecto:** Tower Defense  
+**Integrante:** Carlos Morales  
+**Fecha:** 01/02/2026  
+**Materia:** Desarrollo de Software de Juegos Interactivos  
+**Plataforma:** Web (Navegador)  
+**Motor:** Babylon.js 6.x  
+**Lenguaje:** TypeScript  
+**Build Tool:** Vite  
+**Control de Versiones:** Git + GitHub  
+**Gestión:** GitHub Projects (Kanban)
 
 ---
 
 ## Tabla de Contenidos
 
 ### 1. Gestión del Proyecto
-Documentación sobre la planeación, organización y seguimiento del desarrollo del juego (fase de pre-producción y diseño técnico).
+Documentación sobre la planeación, organización y seguimiento del desarrollo del juego.
 
-**Documentos:**
+**1.1 Descripción del Proyecto**
+- Información general del proyecto
+- Descripción conceptual y narrativa
+- Objetivos principales
+- Alcance del proyecto (completo y slice para examen)
+- Integrantes y tecnologías
+- Entregables del proyecto
+
+**1.2 Backlog de Tareas**
+- Épicas principales del desarrollo
+- Historias de usuario (Implementación IM-)
+- Tareas de Kanban para GDD (TAR-)
+- Estado de cada tarea
+- Estimaciones (puntos de historia)
+- Métricas y riesgos
+- Próximos pasos
+
+📁 Ruta sugerida:
 - `01_Gestion/01_descripcion_proyecto.md`
-  - Información general del proyecto
-  - Descripción conceptual
-  - Objetivos principales
-  - Alcance del proyecto (incluido/excluido)
-  - Equipo y tecnologías propuestas
-  - Entregables
-
 - `01_Gestion/02_backlog_tareas.md`
-  - Épicas principales
-  - Tareas desglosadas por épica
-  - Estado de cada tarea
-  - Estimaciones de tiempo
-  - Métricas y riesgos
-  - Próximos pasos
 
 ---
 
 ### 2. Game Design Document (GDD)
-Documento completo que especifica todos los aspectos del diseño del videojuego y justifica decisiones con el Framework MDA.
+Documento completo que especifica todos los aspectos del diseño del videojuego.
 
-**Documentos:**
+**GDD Completo**
+- Resumen ejecutivo
+- Concepto, historia y ambientación (sci-fi)
+- Objetivo del juego y flujo de juego (Preparación → Oleada → Entre oleadas)
+- Mecánicas: torres, enemigos, oleadas, economía, controles
+- Diseño de niveles (Nivel 1, 2, 3)
+- Interfaz de usuario (HUD, menú, pantallas)
+- Arte y estilo visual (sci-fi minimalista con neón)
+- Audio y música (planificado)
+- Especificaciones técnicas y arquitectura del proyecto
+- Cronograma de desarrollo
+
+📁 Ruta sugerida:
 - `02_Game_Design_Document/GDD_completo.md`
-  - Visión general y concepto principal
-  - Análisis MDA (Aesthetics, Dynamics, Mechanics)
-  - Core Loop y sistemas principales
-  - Narrativa y construcción del mundo
-  - Diseño de niveles (10 niveles)
-  - Especificaciones del jugador y enemigos
-  - UI/UX (mockups descritos)
-  - Dirección visual y arte
-  - Sistema de audio
-  - Arquitectura conceptual (UML + patrones)
-  - Especificaciones técnicas objetivo
-  - Consideraciones futuras y calidad (QA)
 
 ---
 
 ### 3. Documentación de Assets
-Inventario y especificaciones de los recursos (visual, UI, audio) planificados para producción.
+Inventario completo y especificaciones de recursos (modelos, UI, efectos y audio).
 
-**Documentos:**
+**Documentación de Assets**
+- Inventario total de assets (3D, UI, VFX, SFX)
+- Especificaciones técnicas y formatos
+- Integración en el código (rutas y uso)
+- Requisitos de almacenamiento
+- Notas de derechos y atribuciones
+
+📁 Ruta sugerida:
 - `03_Assets/assets_documentacion.md`
-  - Inventario total de assets (planificado)
-  - Especificación de fondos (10 niveles)
-  - Documentación del personaje y enemigos
-  - UI (menú, HUD, pantallas)
-  - Audio (SFX + música)
-  - Resoluciones y formatos
-  - Requisitos de almacenamiento
-  - Atribuciones y licencias
 
 ---
 
 ## Resumen Ejecutivo
 
 ### Visión del Proyecto
-**Vault Protocol** es un videojuego de **sigilo táctico + puzzles** donde el jugador infiltra instalaciones de seguridad para recuperar **fragmentos de datos** sin ser detectado por cámaras, drones y sistemas de alarma.  
-La experiencia se diseña aplicando formalmente **MDA**, garantizando coherencia entre reglas (mecánicas), comportamiento (dinámicas) y emoción (estética).
+**Tower Defense** es un videojuego **3D** de estrategia en tiempo real con temática **Sci-Fi**. El jugador debe defender un **núcleo de energía** de oleadas de enemigos alienígenas, colocando torres estratégicamente en un mapa tipo **grid**.
 
-> **Nota importante (regla del proyecto):** Este repositorio corresponde a **pre-producción y diseño técnico**.  
-> **No se incluye código funcional**. El objetivo es entregar un **blueprint listo para producción**.
+### Objetivos (Globales)
+- Defender el núcleo de energía hasta completar todas las oleadas.
+- Administrar recursos (créditos) para construir y mejorar torres.
+- Diseñar niveles con rutas definidas para el tránsito de enemigos.
+- Presentar una UI clara (créditos, vida del núcleo, oleada actual).
 
----
-
-## Objetivos Logrados (Entregable de Diseño)
-✓ Análisis completo con Framework **MDA**  
-✓ Diseño detallado de **Core Loop** y sistemas  
-✓ Planificación tipo ágil con **Épicas y User Stories**  
-✓ Arquitectura conceptual con **UML** y patrones  
-✓ Diseño de **10 niveles** con progresión  
-✓ Mockups descritos de UI/UX + dirección de arte + audio  
-✓ Documentación de assets y especificaciones técnicas objetivo  
-
----
-
-## Tecnologías Propuestas (Stack objetivo)
-**Motor:** Unity / Godot / Babylon.js (selección justificada en el GDD)  
-**Lenguaje:** C# (Unity) / GDScript (Godot) / TypeScript (Babylon.js)  
-**Persistencia (diseño):** JSON (config) + Savegame JSON  
-**Gestión:** Git + GitHub Projects / Trello  
-**Diseño UI/UX:** Figma (o mockups en imágenes)  
+### Slice Vertical para Examen
+Para la evaluación se implementa un **slice vertical del Nivel 1**:
+- Grid 10x10
+- Camino en forma de “S”
+- 1 torre funcional (Láser Básico)
+- 1 enemigo funcional (Drone Scout)
+- Sistema de oleadas básico (5 oleadas)
+- Economía (ganar/gastar créditos)
+- HUD básico
+- Victoria/Derrota
 
 ---
 
-## Estadísticas del Proyecto (Estimadas)
-| Métrica | Valor |
-|---|---:|
-| Documentos principales | 4 |
-| Diagramas (UML + Core Loop) | 4 |
-| Niveles diseñados | 10 |
-| Sistemas diseñados | 5 (detección, energía, gadgets, loot, progreso) |
-| Horas estimadas totales | 28–34 |
+## Tecnologías Utilizadas
+- **Motor 3D:** Babylon.js 6.x
+- **Lenguaje:** TypeScript
+- **Build Tool:** Vite
+- **Plataforma:** Web (Navegador con WebGL 2.0)
+- **Control de versiones:** Git + GitHub
+- **Gestión:** GitHub Projects (Kanban)
 
 ---
 
-## Estructura de Directorios (Repositorio)
+## Estructura de Directorios (Referencia)
+

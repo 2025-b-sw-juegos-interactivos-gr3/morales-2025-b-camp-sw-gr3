@@ -1,112 +1,110 @@
-# Gestión del Proyecto - Vault Protocol
+# Gestión del Proyecto - Tower Defense
 
-> **Tipo de entrega:** Pre-producción y Diseño Técnico  
-> **Regla del proyecto:** No se incluye código funcional. Este documento describe el blueprint listo para producción.
+**Integrante:** Carlos Morales  
+**Fecha:** 01/02/2026
 
 ---
 
 ## 1. Información General del Proyecto
 
-**Nombre del Proyecto:** Vault Protocol  
-**Tipo de Proyecto:** Videojuego de entretenimiento (sigilo + puzzle)  
-**Género:** Sigilo táctico / Puzzle / Gestión ligera de recursos  
-**Plataforma Objetivo:** PC / Web (según motor seleccionado)  
-**Duración del Desarrollo (documentación):** Segundo Bimestre  
-**Estado del Proyecto:** Documentación finalizada (Blueprint listo)
+**Nombre del Proyecto:** Tower Defense  
+**Tipo de Juego:** Juego de Entretenimiento - Tower Defense 3D  
+**Plataforma:** Web (Navegador)  
+**Motor:** Babylon.js 6.x  
+**Lenguaje:** TypeScript  
+**Build Tool:** Vite  
+**Control de Versiones:** Git + GitHub  
+**Gestión del Proyecto:** GitHub Projects (Kanban)
+
+**Período:** 2do Bimestre  
+**Estado del Proyecto:** En desarrollo (enfocado en slice vertical del Nivel 1 para evaluación)
 
 ---
 
-## 2. Descripción del Proyecto (Concepto)
+## 2. Descripción del Proyecto
 
-Vault Protocol es un videojuego donde el jugador infiltra instalaciones de alta seguridad para recuperar “fragmentos de datos” sin ser detectado por cámaras y drones.  
-La experiencia busca generar tensión y satisfacción al optimizar rutas, administrar energía y tomar decisiones tácticas con información parcial.
+Tower Defense es un juego de estrategia en tiempo real en 3D con temática Sci-Fi. El jugador asume el rol de comandante de defensa de una estación espacial que protege un **Núcleo de Energía Cuántica** frente a oleadas de enemigos alienígenas.
 
-**Fantasia del jugador:** “Soy un infiltrador inteligente que vence al sistema por estrategia, no por fuerza”.
+La experiencia se basa en:
+- Colocación estratégica de torres en un mapa tipo **grid**
+- Ataque automático (targeting) de torres contra enemigos
+- Enemigos que siguen un camino predefinido (pathfinding)
+- Economía de créditos para construir y mejorar defensas
+- Sistema de oleadas progresivo
 
 ---
 
 ## 3. Objetivos Principales
 
-1) Diseñar un juego con coherencia completa usando **Framework MDA**.  
-2) Definir **mecánicas medibles** (detección, energía, movimiento) y su relación con la emoción del jugador.  
-3) Diseñar 10 niveles con progresión clara y objetivos por nivel.  
-4) Planificar el proyecto con metodología ágil (épicas, user stories, tiempos).  
-5) Proponer una arquitectura conceptual (UML + patrones) lista para implementación futura.
+- Implementar la colocación de torres en un grid con validación de celdas.
+- Construir un sistema de targeting automático y ataque (mínimo una torre funcional).
+- Implementar movimiento de enemigos sobre un camino definido (mínimo un enemigo funcional).
+- Implementar oleadas progresivas (mínimo 5 oleadas para el Nivel 1).
+- Implementar economía: ganar créditos por eliminar enemigos y gastar al construir/mejorar.
+- Diseñar un HUD claro con información crítica: créditos, vida del núcleo y oleada actual.
+- Implementar condiciones de victoria/derrota.
 
 ---
 
 ## 4. Alcance
 
-### Incluido en el Proyecto (Blueprint)
-- GDD completo con análisis MDA
-- Core Loop + sistemas principales (detección, gadgets, energía, loot, progreso)
-- Diseño de 10 niveles (concepto, objetivos, dificultad, eventos)
-- UI/UX: wireframes descritos y flujo de pantallas
-- Arte y audio: dirección, moodboard y lista de assets (planificados)
-- Arquitectura: UML (casos de uso, clases conceptual, FSM estados) + patrones
+### 4.1 Alcance Completo (Diseñado)
+- 5 tipos de torres: Láser, Plasma, Tesla, Misiles, Ralentizador (con sistema de mejoras hasta nivel 3).
+- 4 tipos de enemigos: Drone Scout, Heavy Walker, Stealth Unit, Boss Titan.
+- Sistema de oleadas progresivo con jefes.
+- Sistema de economía completo (créditos por kill, bonus, venta, upgrades).
+- 3 niveles con mapas diferentes:
+  - Nivel 1: Estación de Entrada (tutorial)
+  - Nivel 2: Corredor Industrial
+  - Nivel 3: Núcleo Central
 
-### Excluido del Proyecto (por regla del curso)
-- Código funcional
-- Implementación real del motor
-- Assets finales producidos (solo especificaciones/referencias)
-- Multijugador, online services reales
-- Monetización real y analítica de producción
-
----
-
-## 5. Público Objetivo
-
-- Jugadores que disfrutan puzzles, planificación y tensión controlada
-- Edad recomendada: 12+
-- Sesiones: 10–20 minutos por run
+### 4.2 Alcance para Implementación (Evaluación / Examen)
+Se implementa un **slice vertical** del **Nivel 1** con mecánicas básicas:
+- Grid 10x10 visible (camino vs celdas buildable)
+- Camino en forma de “S” (spawn → núcleo)
+- Torre funcional: **Láser Básico**
+- Enemigo funcional: **Drone Scout**
+- Sistema de oleadas básico (5 oleadas)
+- Economía básica (créditos por eliminar + costo de torre)
+- HUD básico (créditos, vida del núcleo, oleada)
+- Condición de victoria/derrota
 
 ---
 
-## 6. Equipo del Proyecto
+## 5. Equipo del Proyecto
 
-**Desarrollador:** [TU NOMBRE]  
-**Rol asumido (simulado):**
-- Game Designer (sistemas + niveles)
-- Technical Designer (arquitectura conceptual)
-- UI/UX Designer (wireframes)
-- Producer (planificación y riesgos)
+**Integrante:** Carlos Morales  
+**Roles:** Programación, Diseño de juego, Gestión del proyecto y documentación.
 
 ---
 
-## 7. Tecnologías Propuestas (Stack Objetivo)
+## 6. Tecnologías Utilizadas
 
-> Nota: el stack final depende de la plataforma y del alcance real, pero aquí se documenta una propuesta coherente.
-
-**Opción A (industrial):** Unity + C#  
-**Opción B (indie/2D):** Godot + GDScript  
-**Opción C (web):** Babylon.js + TypeScript
-
-**Persistencia (diseño):**
-- Config: JSON (niveles, parámetros de cámaras/drones)
-- Savegame: JSON (progreso, gadgets desbloqueados)
-
-**Gestión:**
-- Git (versionado)
-- GitHub Projects / Trello (tablero ágil)
+- **Babylon.js 6.x** (render 3D)
+- **TypeScript** (desarrollo)
+- **Vite** (bundling + dev server)
+- **Git + GitHub** (versionado)
+- **GitHub Projects** (Kanban para GDD y para implementación)
 
 ---
 
-## 8. Entregables
+## 7. Entregables
 
-1) `01_Gestion/01_descripcion_proyecto.md`  
-2) `01_Gestion/02_backlog_tareas.md`  
-3) `02_Game_Design_Document/GDD_completo.md`  
-4) `03_Assets/assets_documentacion.md`
+- Documento de entrega del proyecto (resumen técnico y organizacional)
+- Game Design Document (GDD) completo
+- Kanban de Gestión del GDD (prefijo: TAR-)
+- Kanban de Implementación (prefijo: IM-)
+- Repositorio con proyecto base configurado (Vite + Babylon.js + TS)
+- Slice vertical jugable del Nivel 1
+- Documentación en Markdown (Índice general + Gestión)
 
 ---
 
-## 9. Criterios de Éxito (Aceptación del blueprint)
+## 8. Enlaces del Proyecto (Completar)
 
-- El GDD debe permitir que un tercero implemente el juego sin ambigüedades.
-- El análisis MDA debe justificar todas las decisiones principales.
-- La arquitectura debe ser coherente con sistemas y UI.
-- La planificación debe mostrar épicas, tareas y estimaciones realistas.
-- Los assets deben estar especificados con formatos, resoluciones y propósito.
+- **Repositorio:** [Pegar URL aquí]
+- **Kanban GDD (TAR-):** [Pegar URL aquí]
+- **Kanban Implementación (IM-):** [Pegar URL aquí]
 
 ---
 
